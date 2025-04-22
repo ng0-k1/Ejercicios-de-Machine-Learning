@@ -76,6 +76,29 @@ accuracy_score(y_test, y_pred4)
 #Curva de aprendizaje
 def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
                         n_jobs=1, train_sizes=np.linspace(.1, 1.0, 5)):
+    """
+    Genera una curva de aprendizaje para un estimador dado, mostrando el rendimiento en entrenamiento 
+    y validación cruzada conforme aumenta el número de muestras de entrenamiento.
+
+    Args:
+        estimator (object): Modelo de aprendizaje supervisado que sigue la interfaz de scikit-learn.
+        title (str): Título del gráfico.
+        X (array-like): Conjunto de características de entrada.
+        y (array-like): Etiquetas objetivo correspondientes a X.
+        ylim (tuple, optional): Límite para el eje Y, e.g. (0.0, 1.1). Si es None, se ajusta automáticamente.
+        cv (int, cross-validation generator, or iterable, optional): Estrategia de validación cruzada.
+            Si se especifica un entero, se utiliza como número de folds en KFold.
+        n_jobs (int, optional): Número de trabajos paralelos a ejecutar para el cálculo. 
+            -1 significa usar todos los procesadores.
+        train_sizes (array-like, optional): Proporciones o cantidades absolutas de muestras de entrenamiento
+            que se usarán para generar la curva. Por defecto, 5 valores entre 10% y 100%.
+
+    Returns:
+        matplotlib.pyplot: El objeto pyplot con la curva de aprendizaje generada.
+    
+    Nota:
+        Las curvas muestran el promedio y desviación estándar de la precisión en entrenamiento y validación.
+    """
     plt.figure()
     plt.title(title)
     if ylim is not None:
